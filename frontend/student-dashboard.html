@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - HostelHub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Toggle button for opening the sidebar -->
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+
+    <!-- Sidebar navigation -->
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">×</button>
+        <nav>
+            <ul>
+                <li onclick="showSection('dashboard')">Dashboard</li>
+                <li onclick="showSection('file-complaint')">File Complaint</li>
+                <li onclick="showSection('request-board')">Request Board</li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main content area -->
+    <div class="content">
+        <header>
+            <h1>Student Dashboard</h1>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section">
+            <h2>Your Attendance</h2>
+            <div class="attendance">
+                <div class="circle-chart" id="circle-chart">80%</div>
+                <p>Attendance: 80 days out of 100</p>
+            </div>
+        </section>
+
+        <!-- File Complaint Section -->
+        <section id="file-complaint" class="section" style="display:none;">
+            <h2>File a Complaint</h2>
+            <textarea placeholder="Enter your complaint..."></textarea>
+            <button onclick="submitComplaint()">Submit Complaint</button>
+        </section>
+
+        <!-- Request Board Section -->
+        <section id="request-board" class="section" style="display:none;">
+            <h2>Request Board</h2>
+            <textarea placeholder="Enter your request..."></textarea>
+            <button onclick="submitRequest()">Submit Request</button>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

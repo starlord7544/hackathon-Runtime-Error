@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login - HostelHub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Student Login</h1>
+    </header>
+    <main>
+        <form onsubmit="redirectToStudentDashboard(event)">
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <button onclick="location.href='login-faculty.html'">Switch to Faculty Login</button>
+    </main>
+    <script>
+        function redirectToStudentDashboard(event) {
+            event.preventDefault();
+            location.href = 'student-dashboard.html';
+        }
+    </script>
+</body>
+
+</html>
