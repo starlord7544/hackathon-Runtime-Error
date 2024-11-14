@@ -1,0 +1,99 @@
+/* Reset and Basic Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+  }
+  
+  /* Admin Login Section */
+  .login-container {
+    text-align: center;
+  }
+  
+  .login-container input {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .login-container button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .login-container button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Main Container Styling */
+  .main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .data-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 80%;
+  }
+  
+  /* Data Box Styling */
+  .data-box {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    transition: all 0.3s ease;
+  }
+  
+  .data-box:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+  }
+  
+  .data-box h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .data-box p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .data-container {
+      flex-direction: column;
+      gap: 10px;
+      width: 90%;
+    }
+  
+    .data-box {
+      width: 100%;
+    }
+  }
+  

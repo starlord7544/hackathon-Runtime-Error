@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Login Page</title>
+  <link rel="stylesheet" href="form.css">
+</head>
+
+<body>
+  <div class="login-container">
+    <h2>Student Login</h2>
+    <form id="student-form">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+      <label for="studentId">Student ID</label>
+      <input type="text" id="studentId" name="studentId" placeholder="Enter your student ID" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <label for="contactNo">Contact Number</label>
+      <input type="tel" id="contactNo" name="contactNo" placeholder="Enter your contact number" required>
+
+      <label for="parentName">Parent's Name</label>
+      <input type="text" id="parentName" name="parentName" placeholder="Enter parent's name" required>
+
+      <label for="parentId">Parent's ID</label>
+      <input type="text" id="parentId" name="parentId" placeholder="Enter parent's id" required>
+
+      <label for="parentContact">Parent's Contact</label>
+      <input type="tel" id="parentContact" name="parentContact" placeholder="Enter parent's contact number" required>
+
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <script>
+    const studentForm = document.querySelector('#student-form');
+
+    // Function to handle form submission
+    studentForm.addEventListener('submit', async (e) => {
+      e.preventDefault();  // Prevent the default form submission behavior
+
+      // Gather form data
+      const formData = new FormData(studentForm);
+      const data = {
+        student_id: formData.get('studentId'),
+        name: formData.get('name'),
+        password: formData.get('password'),  // This might be used for authentication, consider if needed
+        email: formData.get('email'),
+        parent_id: formData.get('parentId'),  // Correct the field name here
+        contact_no: formData.get('contactNo'),
+        parent_name: formData.get('parentName'),
+        parent_contact_no: formData.get('parentContact'),
+        label: "Freshman",  // Assuming 'Freshman' is a default label
+        descriptor: ["Mathematics", "Physics", "Computer Science"],  // Hardcoded subjects
+      };
+
+      // Send POST request to the API
+      try {
+        const response = await fetch('http://localhost:6969/v1/student/addStudent', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        // Check if the response was successful
+        if (response.ok) {
+          // Redirect to registerFace.html after successful form submission
+          window.location.href = 'registerFace.html';
+        } else {
+          // Handle error response
+          const errorData = await response.json();
+          alert(`Error: ${errorData.message || 'Something went wrong!'}`);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('There was an issue with the request.');
+      }
+    });
+  </script>
+</body>
+
+</html>

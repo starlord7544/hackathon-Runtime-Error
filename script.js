@@ -1,31 +1,88 @@
-const video = document.getElementById('video')
+function showSection(sectionId) {
+  // Hide all sections
+  const sections = document.querySelectorAll('.section');
+  sections.forEach((section) => {
+    section.classList.remove('active');
+  });
 
-Promise.all([
-  faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
-  faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
-  faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
-  faceapi.nets.faceExpressionNet.loadFromUri('/models')
-]).then(startVideo)
+  // Remove 'active' class from all sidebar links
+  const links = document.querySelectorAll('.sidebar a');
+  links.forEach((link) => {
+    link.classList.remove('active');
+  });
 
-function startVideo() {
-  navigator.getUserMedia(
-    { video: {} },
-    stream => video.srcObject = stream,
-    err => console.error(err)
-  )
+  // Show the selected section
+  const activeSection = document.getElementById(sectionId);
+  if (activeSection) {
+    activeSection.classList.add('active');
+  }
+
+  // Set the active link
+  const activeLink = document.getElementById(sectionId + '-link');
+  if (activeLink) {
+    activeLink.classList.add('active');
+  }
 }
 
-video.addEventListener('play', () => {
-  const canvas = faceapi.createCanvasFromMedia(video)
-  document.body.append(canvas)
-  const displaySize = { width: video.width, height: video.height }
-  faceapi.matchDimensions(canvas, displaySize)
-  setInterval(async () => {
-    const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
-    const resizedDetections = faceapi.resizeResults(detections, displaySize)
-    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-    faceapi.draw.drawDetections(canvas, resizedDetections)
-    faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
-    faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
-  }, 100)
-})
+document.addEventListener('DOMContentLoaded', () => {
+  // Get references to form elements
+  const complaintForm = document.getElementById('complaint-form');
+  const complaintType = document.getElementById('complain-type');
+  const complaintDetails = document.getElementById('complain-details');
+  const recentComplaintsList = document.getElementById('recent-complaints');
+
+  // Handle form submission
+  complaintForm.addEventListener('submit', (event) => {
+    event.preventDefault(); // Prevent default form submission
+
+    // Get the current date
+    const currentDate = new Date().toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric'
+    });
+
+    // Create new complaint item
+    const complaintItem = document.createElement('li');
+    complaintItem.innerHTML = `<strong>${complaintType.options[complaintType.selectedIndex].text}:</strong> ${complaintDetails.value} - Not yet resolved (Submitted: ${currentDate})`;
+
+    // Append to the recent complaints list
+    recentComplaintsList.appendChild(complaintItem);
+
+    // Clear form inputs after submission
+    complaintType.value = '';
+    complaintDetails.value = '';
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Get references to the request form elements
+  const requestForm = document.getElementById('request-form');
+  const requestType = document.getElementById('request-type');
+  const requestDetails = document.getElementById('request-details');
+  const pendingRequestsList = document.getElementById('pending-requests');
+
+  // Handle request form submission
+  requestForm.addEventListener('submit', (event) => {
+    event.preventDefault(); // Prevent default form submission
+
+    // Get the current date
+    const currentDate = new Date().toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric'
+    });
+
+    // Create new request item
+    const requestItem = document.createElement('li');
+    requestItem.innerHTML = `<strong>${requestType.options[requestType.selectedIndex].text} request</strong> - ${requestDetails.value} (Submitted: ${currentDate})`;
+
+    // Append to the pending requests list
+    pendingRequestsList.appendChild(requestItem);
+
+    // Clear form inputs after submission
+    requestType.value = '';
+    requestDetails.value = '';
+  });
+});
+

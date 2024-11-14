@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="adminPage.css">
+</head>
+<body>
+
+  <!-- Admin Login Check -->
+  <div class="login-container" id="login-container">
+    <h2>Admin Login</h2>
+    <input type="password" id="admin-password" placeholder="Enter admin password">
+    <button onclick="login()">Login</button>
+  </div>
+
+  <!-- Main Container (only visible after login) -->
+  <div class="main-container" id="main-container" style="display: none;">
+    <div class="data-container">
+      <div class="data-box" id="box1">
+        <h3>Box 1</h3>
+        <p id="data1 ">Loading...</p>
+      </div>
+      <div class="data-box" id="box2">
+        <h3>Box 2</h3>
+        <p id="data2">Loading...</p>
+      </div>
+      <div class="data-box" id="box3">
+        <h3>Box 3</h3>
+        <p id="data3">Loading...</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="adminScript.js"></script>
+</body>
+</html>
