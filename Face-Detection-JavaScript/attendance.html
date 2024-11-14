@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mark Attendance</title>
+  <script defer src="face-api.min.js"></script>
+  <script defer src="attendance.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f3f4f6;
+      color: #333;
+      position: relative;
+    }
+
+    .video-container {
+      /* position: relative; */
+      width: 720px;
+      height: 560px;
+      /* border: 2px solid #333; */
+      border-radius: 15px;
+      overflow: hidden;
+      /* background-color: #000; */
+    }
+
+    video {
+      position: absolute;
+      border-radius: 15px;
+      height: auto;
+      z-index: -1;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      gap: 10px;
+    }
+
+    #attendance-list {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      padding: 20px;
+      width: 100%;
+      max-width: 300px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #ffffff;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    #attendance-list h2 {
+      font-size: 20px;
+      color: #1d4ed8;
+      margin-bottom: 15px;
+      text-align: center;
+      font-weight: bold;
+      border-bottom: 2px solid #1d4ed8;
+      padding-bottom: 5px;
+    }
+
+    #student-attendance {
+      list-style-type: none;
+      padding: 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    #student-attendance li {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      transition: background-color 0.3s;
+    }
+
+    #student-attendance li:last-child {
+      border-bottom: none;
+    }
+
+    #student-attendance li:hover {
+      background-color: #f3f4f6;
+    }
+  </style>
+</head>
+<body>
+  <div class="video-container">
+    <video id="video" width="720" height="560" autoplay muted></video>
+  </div>
+  <div class="container">
+    <div id="attendance-list">
+      <h2>Attendance</h2>
+      <ul id="student-attendance"></ul>
+    </div>
+  </div>
+</body>
+</html>

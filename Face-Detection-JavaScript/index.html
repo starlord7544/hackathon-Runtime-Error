@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HostelHub-Hack</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+  <!-- Top Navbar -->
+  <nav class="top-navbar">
+    <div class="navbar-logo">Student Portal</div>
+    <ul class="navbar-links">
+      <li><a href="./form.html">Login</a></li>
+      <li><a href="./adminform.html">Admin</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="main-container">
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+      <a href="#" id="dashboard-link" class="active" onclick="showSection('dashboard')">Home</a>
+      <a href="#" id="attendance-link" onclick="showSection('fileupload')">Attendance</a>
+      <a href="#" id="request-link" onclick="showSection('request')">Request</a>
+      <a href="#" id="complain-link" onclick="showSection('complain')">Complain</a>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="content">
+      <div id="dashboard" class="section active">
+        <h1>Home</h1>
+        <p>Welcome to the Student Dashboard. Here you can manage your academic and hostel-related activities.</p>
+        <ul>
+          <li><strong>Current Attendance:</strong> 85% (Out of 100 days)</li>
+          <li><strong>Upcoming Events:</strong> Hostel sports day on 20th November</li>
+          <li><strong>Recent Notifications:</strong> New complaints received in the system.</li>
+        </ul>
+      </div>
+      <div id="fileupload" class="section">
+        <h1>Attendance</h1>
+        <p>Upload your attendance details here. Make sure to include your full name and the date range.</p>
+        <form action="#">
+          <label for="attendance-file">Select Attendance File:</label>
+          <input type="file" id="attendance-file" name="attendance-file" accept=".xlsx,.csv" required>
+          <button type="submit" class="redirect">Upload</button>
+        </form>
+        <h2>Previous Uploads</h2>
+        <table border="1" cellpadding="10">
+          <tr>
+            <th>File Name</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+          <tr>
+            <td>attendance_november.xlsx</td>
+            <td>10th Nov 2024</td>
+            <td><button class="redirect">View</button></td>
+          </tr>
+          <tr>
+            <td>attendance_october.csv</td>
+            <td>1st Oct 2024</td>
+            <td><button class="redirect">View</button></td>
+          </tr>
+        </table>
+      </div>
+      <div id="request" class="section">
+        <h1>Request</h1>
+        <p>Submit your requests for hostel maintenance or any essential items here.</p>
+        <form action="#">
+          <label for="request-type">Request Type:</label>
+          <select id="request-type" name="request-type" required>
+            <option value="maintenance">Maintenance</option>
+            <option value="items">Items</option>
+          </select>
+          <br>
+          <label for="request-details">Details:</label>
+          <textarea id="request-details" name="request-details" rows="4" required></textarea>
+          <br>
+          <button type="submit" class="redirect">Submit Request</button>
+        </form>
+        <h2>Pending Requests</h2>
+        <ul>
+          <li>Maintenance request for water supply issue (Submitted: 5th Nov)</li>
+          <li>Item request for a new bed (Submitted: 3rd Nov)</li>
+        </ul>
+      </div>
+      <div id="complain" class="section">
+        <h1>Complain</h1>
+        <p>Submit your complaints regarding hostel facilities or any related issues here.</p>
+        <form id="complaint-form" action="javascript:void(0);">
+          <label for="complain-type">Complaint Type:</label>
+          <select id="complain-type" name="complain-type" required>
+            <option value="food">Food Quality</option>
+            <option value="cleanliness">Cleanliness</option>
+            <option value="staff">Staff Behavior</option>
+            <option value="other">Other</option>
+          </select>
+          <br>
+          <label for="complain-details">Details:</label>
+          <textarea id="complain-details" name="complain-details" rows="4" required></textarea>
+          <br>
+          <button type="submit" class="redirect">Submit Complaint</button>
+        </form>
+        <h2>Recent Complaints</h2>
+        <ul id="recent-complaints">
+          <!-- <li><strong>Food quality complaint</strong> - Not yet resolved (Submitted: 10th Nov)</li>
+          <li><strong>Cleanliness issue in Block C</strong> - Resolved (Submitted: 8th Nov)</li> -->
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>

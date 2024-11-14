@@ -1,0 +1,440 @@
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Top Navbar Styling */
+.top-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+}
+
+.navbar-links li {
+    margin-left: 20px;
+}
+
+.navbar-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background-color 0.3s;
+}
+
+.navbar-links a:hover {
+    background-color: #444;
+    border-radius: 5px;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #333;
+    padding-top: 60px;
+    transition: left 0.3s;
+    color: #fff;
+}
+
+.sidebar a {
+    display: block;
+    padding: 15px 20px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background-color: #4CAF50;
+}
+
+/* Main Container to position Sidebar and Content */
+.main-container {
+    display: flex;
+}
+
+/* Content Styling */
+.content {
+    margin-left: 200px;
+    padding: 100px 40px 20px; /* Additional padding for spacing */
+    transition: margin-left 0.3s;
+    flex: 1;
+    background-color: #f7f7f7;
+    min-height: 100vh;
+}
+
+.section {
+    display: none;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.section.active {
+    display: block;
+}
+
+/* Home Section Styling */
+#dashboard h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#dashboard p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* List Styling for Attendance, Events, and Notifications */
+#dashboard ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#dashboard li {
+    padding: 15px 20px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+    border-left: 4px solid #4CAF50;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+#dashboard li strong {
+    color: #333;
+}
+
+/* Button Styling */
+.redirect {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin: 20px 0;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.redirect:hover {
+    background-color: #45a049;
+}
+
+.redirect a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Attendance Section Styling */
+#fileupload h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#fileupload p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#fileupload form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+#fileupload form label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+#fileupload form input[type="file"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+#fileupload h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Table Styling for Previous Uploads */
+#fileupload table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#fileupload th,
+#fileupload td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#fileupload th {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+#fileupload tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#fileupload tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* View Button Styling */
+#fileupload .redirect {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+#fileupload .redirect:hover {
+    background-color: #45a049;
+}
+
+/* Request Section Styling */
+#request h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#request p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#request form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+#request form label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+#request form select,
+#request form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    resize: vertical;
+}
+
+#request h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Pending Requests List Styling */
+#request ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+#request li {
+    padding: 15px;
+    margin: 0;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+
+#request li:last-child {
+    border-bottom: none;
+}
+
+#request li strong {
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+/* Submit Button Styling */
+#request .redirect {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+#request .redirect:hover {
+    background-color: #45a049;
+}
+
+/* Complain Section Styling */
+#complain h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#complain p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#complain form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+#complain form label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+#complain form select,
+#complain form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    resize: vertical;
+}
+
+#complain h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Recent Complaints List Styling */
+#complain ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+#complain li {
+    padding: 15px;
+    margin: 0;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+
+#complain li:last-child {
+    border-bottom: none;
+}
+
+#complain li strong {
+    font-weight: bold;
+    color: #e53935; /* Red color for complaints to emphasize urgency */
+}
+
+/* Submit Button Styling */
+#complain .redirect {
+    padding: 10px 20px;
+    background-color: #e53935;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+#complain .redirect:hover {
+    background-color: #d32f2f;
+}

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HostelHub-Hack - Admin Dashboard</title>
+</head>
+
+<style>
+  /* Reset and Basic Styling */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Top Navbar Styling */
+  .top-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  .navbar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .navbar-links {
+    list-style: none;
+    display: flex;
+  }
+
+  .navbar-links li {
+    margin-left: 20px;
+  }
+
+  .navbar-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background-color 0.3s;
+  }
+
+  .navbar-links a:hover {
+    background-color: #444;
+    border-radius: 5px;
+  }
+
+  /* Sidebar Styling */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #333;
+    padding-top: 60px;
+    color: #fff;
+  }
+
+  .sidebar a {
+    display: block;
+    padding: 15px 20px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .sidebar a:hover {
+    background-color: #4CAF50;
+  }
+
+  /* Main Container to position Sidebar and Content */
+  .main-container {
+    display: flex;
+    margin-left: 200px; /* Offset content to make space for the sidebar */
+  }
+
+  /* Content Styling */
+  .content {
+    padding: 80px 20px 20px;
+    flex: 1;
+  }
+
+  .section {
+    display: none;
+  }
+
+  .section.active {
+    display: block;
+  }
+
+  .redirect a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .redirect {
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  .redirect:hover {
+    background-color: #45a049;
+  }
+
+  /* Admin Dashboard */
+  .admin-section {
+    margin-top: 40px;
+  }
+
+  .dashboard-card {
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .dashboard-card h3 {
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .dashboard-card p {
+    color: #555;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .stat-card {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .stat-card h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .stat-card p {
+    font-size: 1.2rem;
+  }
+
+  /* Styling for Mark Attendance Button */
+  .mark-attendance {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+
+  .mark-attendance button {
+    /* background-color: #4CAF50; */
+    background-color: #ccc;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.mark-attendance button:hover {
+      background-color: red;
+      color: white;
+    /* background-color: #45a049; */
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .main-container {
+      margin-left: 0;
+    }
+
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<body>
+
+  <!-- Top Navbar -->
+  <nav class="top-navbar">
+    <div class="navbar-logo">Admin Dashboard</div>
+    <ul class="navbar-links">
+      <li><a href="./form.html">Login</a></li>
+      <li><a href="./adminform.html">Admin</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="main-container">
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+      <a href="#" id="admin-dashboard-link" class="active" onclick="showSection('admin-dashboard')">Dashboard</a>
+      <a href="#" id="student-management-link" onclick="showSection('student-management')">Student Management</a>
+      <a href="#" id="attendance-link" onclick="showSection('attendance')">Attendance</a>
+      <a href="#" id="requests-link" onclick="showSection('requests')">Requests</a>
+      <a href="#" id="complaints-link" onclick="showSection('complaints')">Complaints</a>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="content">
+      <div id="admin-dashboard" class="section active">
+        <div class="head-container"></div>
+        <h1>Admin Dashboard</h1>
+        
+        <!-- Mark Attendance Button Positioned to Right -->
+        <div class="mark-attendance">
+            <a href="./attendance.html"> <button  >Mark Attendance</button></a>
+         
+        </div>
+        
+        <div class="admin-section">
+          <h2>System Overview</h2>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <h2>150</h2>
+              <p>Total Students</p>
+            </div>
+            <div class="stat-card">
+              <h2>9</h2>
+              <p>Active Complaints</p>
+            </div>
+            <div class="stat-card">
+              <h2>5</h2>
+              <p>Pending Requests</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="admin-section">
+          <div class="dashboard-card">
+            <h3>Recent Activity</h3>
+            <p>5 new student registrations in the last 24 hours.</p>
+          </div>
+          <div class="dashboard-card">
+            <h3>Latest Complaints</h3>
+            <p>Complaint about food quality received from Block A.</p>
+          </div>
+          <div class="dashboard-card">
+            <h3>Pending Requests</h3>
+            <p>Request for additional chairs in Block B.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other Sections (Student Management, Attendance, Requests, Complaints) -->
+    </div>
+  </div>
+
+  <script>
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach((section) => {
+        section.classList.remove('active');
+      });
+
+      const links = document.querySelectorAll('.sidebar a');
+      links.forEach((link) => {
+        link.classList.remove('active');
+      });
+
+      const activeSection = document.getElementById(sectionId);
+      if (activeSection) {
+        activeSection.classList.add('active');
+      }
+
+      const activeLink = document.getElementById(sectionId + '-link');
+      if (activeLink) {
+        activeLink.classList.add('active');
+      }
+    }
+  </script>
+
+</body>
+
+</html>

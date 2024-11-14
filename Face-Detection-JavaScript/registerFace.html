@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script defer src="face-api.min.js"></script>
+  <script defer src="registerFace.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    video-container {
+      border: 2px solid black;
+      width: 720px;
+      height: 560px;
+      /* border-radius: 100px; */
+      overflow: hidden;
+      /* position: relative; */
+
+    }
+
+    video{
+      position: absolute;
+      z-index: -1;
+      border-radius:  20px;
+      height: auto;
+    }
+
+    input{
+      margin: 10px;
+      padding: 10px 20px;
+    }
+
+    .container{
+      display: flex;
+      flex-direction: column;
+    }
+
+    button{
+      padding: 10px 20px;
+      border-radius: 10px;
+      
+    }
+
+
+  </style>
+</head>
+<div class="video-container">
+  <video id="video" width="720" height="560" autoplay muted></video>
+</div>
+  <div class="container" >
+    <input type="text" id="student-id" placeholder="Enter student Id" />
+    <button onclick="registerPerson()">Register Face</button>
+  </div>  
+</body>
+</html>
